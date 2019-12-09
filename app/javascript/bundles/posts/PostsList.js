@@ -9,9 +9,22 @@ export default class PostsList extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchPostsList();
+  }
+
+  fetchPostsList = () => {
     fetch('/api/v1/posts').
       then((response) => response.json()).
       then((posts) =>  this.setState({ posts }));
+  }
+
+  handleDelete = (id) => {
+    fetch(`/api/v1/posts/${id}`, { method: 'delete' }).
+      then((response) => {
+        alert('Post deleted successfully');
+
+        this.fetchPostsList();
+      });
   }
 
   render() {
@@ -28,6 +41,7 @@ export default class PostsList extends React.Component {
               <th>Title</th>
               <th>Description</th>
               <th>Is Published</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -43,6 +57,11 @@ export default class PostsList extends React.Component {
                   </td>
                   <td>{post.description}</td>
                   <td>{post.is_published ? 'Yes' : 'No' }</td>
+                  <td>
+                    <button onClick={() => this.handleDelete(post.id) }>
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               )
             })
