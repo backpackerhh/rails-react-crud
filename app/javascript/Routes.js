@@ -4,18 +4,16 @@ import {
   Route,
 } from "react-router-dom";
 
+import PostsList from './bundles/posts/PostsList';
+import PostDetails from './bundles/posts/PostDetails';
+
 export default () => {
   return (
     <Switch>
       <Route exact path="/">
-        <h3>Root Path Component</h3>
+        <PostsList />
       </Route>
-      <Route path="/hello_world">
-        <h3>Hello World Component</h3>
-      </Route>
-      <Route path="/bye_world">
-        <h3>Bye World Component</h3>
-      </Route>
+      <Route exact path="/posts/:id" component={PostDetails} />
     </Switch>
   );
 }
