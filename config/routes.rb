@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'posts/new', to: 'hello_world#index'
   get 'posts/:id', to: 'hello_world#index'
 
   root 'hello_world#index'

@@ -34,6 +34,8 @@ export default class PostsList extends React.Component {
       <div>
         <h3>All Posts</h3>
 
+        <Link to='/posts/new'>New Post</Link>
+
         <table>
           <thead>
             <tr>
