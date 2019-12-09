@@ -63,6 +63,9 @@ export default class PostsList extends React.Component {
                     <button onClick={() => this.handleDelete(post.id) }>
                       Delete
                     </button>
+                    <Link to={`/posts/${post.id}/edit`}>
+                      Edit
+                    </Link>
                   </td>
                 </tr>
               )
